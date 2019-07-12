@@ -1,2 +1,3 @@
-# ChessGame
-Repository containing my game of chess built using React
+# ReactProjects
+Repository containing my projects built using React.js
+
