@@ -1,11 +1,21 @@
 import React from 'react';
 import '../css/Board.css';
+import Piece from './Piece.js';
+import Pawn from './PieceTypes/Pawn.js';
 
-function Square(props){
-    return(
-        <div className="square" style={{background: props.color}}>
-        </div>
-    );
+class Square extends React.Component{
+
+    constructor(props){
+        super(props);
+    }
+
+    render(){
+        return(
+            <div className="square" style={{background: this.props.color}}>
+                <Piece type={this.props.type} />
+            </div>
+        );
+    }
 }
 
 class Board extends React.Component{
