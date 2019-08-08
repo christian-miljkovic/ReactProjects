@@ -1,19 +1,19 @@
 import React from 'react';
 
-class Pawn extends React.Component{
+class Queen extends React.Component{
 
     render(){
         if(this.props.color === 'white'){
             return(
                 <div>
-                    &#x2659;
+                    &#9813;
                 </div>
             );
         }
         else{
             return(
                 <div>
-                    &#9823;
+                    &#9819;
                 </div>
             );
         }
@@ -22,4 +22,4 @@ class Pawn extends React.Component{
 
 }
 
-export default Pawn;
+export default Queen;

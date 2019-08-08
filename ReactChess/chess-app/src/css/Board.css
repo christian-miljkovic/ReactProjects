@@ -10,6 +10,8 @@
     padding: 0;
     text-align: center;
     width: 75px;
+    z-index:-1;
+    position:relative;
   }
 
   .row:after {
