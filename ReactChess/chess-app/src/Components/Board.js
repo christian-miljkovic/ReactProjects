@@ -68,32 +68,36 @@ class Board extends React.Component{
             this.state.squares[0][4] = <King color={"black"}/>            
     }
 
+    handleClick(row,col){
+      // to implement 
+    }
+
     renderRow(isOdd, rowNumber){
         if(isOdd===true){
             return(
                 <div className="row">
-                    <Square color={"#ffffff"} type={this.state.squares[rowNumber][0]} />
-                    <Square color={"#A9A9A9"} type={this.state.squares[rowNumber][1]} />
-                    <Square color={"#ffffff"} type={this.state.squares[rowNumber][2]} />
-                    <Square color={"#A9A9A9"} type={this.state.squares[rowNumber][3]} />
-                    <Square color={"#ffffff"} type={this.state.squares[rowNumber][4]} />
-                    <Square color={"#A9A9A9"} type={this.state.squares[rowNumber][5]} />
-                    <Square color={"#ffffff"} type={this.state.squares[rowNumber][6]} />
-                    <Square color={"#A9A9A9"} type={this.state.squares[rowNumber][7]} />
+                    <Square color={"#ffffff"} onClick={()=>this.handleClick(rowNumber,0)} type={this.state.squares[rowNumber][0]} />
+                    <Square color={"#A9A9A9"} onClick={()=>this.handleClick(rowNumber,1)} type={this.state.squares[rowNumber][1]} />
+                    <Square color={"#ffffff"} onClick={()=>this.handleClick(rowNumber,2)} type={this.state.squares[rowNumber][2]} />
+                    <Square color={"#A9A9A9"} onClick={()=>this.handleClick(rowNumber,3)} type={this.state.squares[rowNumber][3]} />
+                    <Square color={"#ffffff"} onClick={()=>this.handleClick(rowNumber,4)} type={this.state.squares[rowNumber][4]} />
+                    <Square color={"#A9A9A9"} onClick={()=>this.handleClick(rowNumber,5)} type={this.state.squares[rowNumber][5]} />
+                    <Square color={"#ffffff"} onClick={()=>this.handleClick(rowNumber,6)} type={this.state.squares[rowNumber][6]} />
+                    <Square color={"#A9A9A9"} onClick={()=>this.handleClick(rowNumber,7)} type={this.state.squares[rowNumber][7]} />
                 </div>          
             );
         }
         else{
             return(
                 <div className="row">
-                    <Square color={"#A9A9A9"} type={this.state.squares[rowNumber][0]} />
-                    <Square color={"#ffffff"} type={this.state.squares[rowNumber][1]} />
-                    <Square color={"#A9A9A9"} type={this.state.squares[rowNumber][2]} />
-                    <Square color={"#ffffff"} type={this.state.squares[rowNumber][3]} />
-                    <Square color={"#A9A9A9"} type={this.state.squares[rowNumber][4]} />
-                    <Square color={"#ffffff"} type={this.state.squares[rowNumber][5]} />
-                    <Square color={"#A9A9A9"} type={this.state.squares[rowNumber][6]} />
-                    <Square color={"#ffffff"} type={this.state.squares[rowNumber][7]} />
+                    <Square color={"#A9A9A9"} onClick={()=>this.handleClick(rowNumber,0)} type={this.state.squares[rowNumber][0]} />
+                    <Square color={"#ffffff"} onClick={()=>this.handleClick(rowNumber,1)} type={this.state.squares[rowNumber][1]} />
+                    <Square color={"#A9A9A9"} onClick={()=>this.handleClick(rowNumber,2)} type={this.state.squares[rowNumber][2]} />
+                    <Square color={"#ffffff"} onClick={()=>this.handleClick(rowNumber,3)} type={this.state.squares[rowNumber][3]} />
+                    <Square color={"#A9A9A9"} onClick={()=>this.handleClick(rowNumber,4)} type={this.state.squares[rowNumber][4]} />
+                    <Square color={"#ffffff"} onClick={()=>this.handleClick(rowNumber,5)} type={this.state.squares[rowNumber][5]} />
+                    <Square color={"#A9A9A9"} onClick={()=>this.handleClick(rowNumber,6)} type={this.state.squares[rowNumber][6]} />
+                    <Square color={"#ffffff"} onClick={()=>this.handleClick(rowNumber,7)} type={this.state.squares[rowNumber][7]} />
                 </div>          
             );
         }
