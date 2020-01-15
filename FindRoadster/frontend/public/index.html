@@ -29,6 +29,7 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <div id="main-container" style="width: 500px; height: 500px;">main-div</div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -38,6 +39,32 @@
 
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
+
     -->
-  </body>
+    <script src="https://typpo.github.io/spacekit/src/lib/three.r98.min.js"></script>
+    <script src="https://typpo.github.io/spacekit/src/lib/TrackballControls.js"></script>
+    <script src="https://typpo.github.io/spacekit/build/spacekit.js"></script>
+    <script>
+        
+        const viz = new Spacekit.Simulation(document.getElementById("main-container"),
+          {basePath: "https://typpo.github.io/spacekit/src"});
+        
+        // Create a background using Yale Bright Star Catalog data.
+        viz.createStars();
+        
+        // Create our first object - the sun - using a preset space object.
+        viz.createObject('sun', Spacekit.SpaceObjectPresets.SUN);
+        
+        // Then add some planets
+        viz.createObject('mercury', Spacekit.SpaceObjectPresets.MERCURY);
+        viz.createObject('venus', Spacekit.SpaceObjectPresets.VENUS);
+        viz.createObject('earth', Spacekit.SpaceObjectPresets.EARTH);
+        viz.createObject('mars', Spacekit.SpaceObjectPresets.MARS);
+        viz.createObject('jupiter', Spacekit.SpaceObjectPresets.JUPITER);
+        viz.createObject('saturn', Spacekit.SpaceObjectPresets.SATURN);
+        viz.createObject('uranus', Spacekit.SpaceObjectPresets.URANUS);
+        viz.createObject('neptune', Spacekit.SpaceObjectPresets.NEPTUNE);    
+    </script>      
+  </body>          
+  
 </html>

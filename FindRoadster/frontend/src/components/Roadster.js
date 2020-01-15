@@ -8,7 +8,7 @@ class Rendering extends React.Component {
 
     render(){
       return (
-        <div className="App">
+        <div className="main-component">
           
         </div>
       );
