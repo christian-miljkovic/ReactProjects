@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import Script from 'react-load-script'
 
 class Rendering extends React.Component {
   
@@ -6,18 +7,17 @@ class Rendering extends React.Component {
         super(props);
     }
 
-    render(){
 
-      return (
-        <div> 
-            <p>hello</p>       
-            <div id="main-container" style={{width: 100, height: 100}}>Main</div>
-            <script src="https://typpo.github.io/spacekit/src/lib/three.r98.min.js"></script>
-            <script src="https://typpo.github.io/spacekit/src/lib/TrackballControls.js"></script>
-            <script src="https://typpo.github.io/spacekit/build/spacekit.js"></script>
-            <script>
-                var options = {{basePath: "https://typpo.github.io/spacekit/src"}}
-                const viz = new Spacekit.Simulation(document.getElementById("main-container"));
+    componentDidMount() {
+
+        setTimeout(() => 
+            { 
+            
+                let script = document.createElement("script");
+        
+                script.innerText = `console.log('got in here');
+        
+                const viz = new Spacekit.Simulation(document.getElementById("main-container"), {basePath: "https://typpo.github.io/spacekit/src"});
                 
                 // Create a background using Yale Bright Star Catalog data.
                 viz.createStars();
@@ -33,10 +33,34 @@ class Rendering extends React.Component {
                 viz.createObject('jupiter', Spacekit.SpaceObjectPresets.JUPITER);
                 viz.createObject('saturn', Spacekit.SpaceObjectPresets.SATURN);
                 viz.createObject('uranus', Spacekit.SpaceObjectPresets.URANUS);
-                viz.createObject('neptune', Spacekit.SpaceObjectPresets.NEPTUNE);    
-            </script> 
-        </div>                               
+                viz.createObject('neptune', Spacekit.SpaceObjectPresets.NEPTUNE);`
+                script.async = false;
+            
+                document.body.appendChild(script);}
+            , 1000);
+
+        
+      }
+
+
+    render(){
+
+      return (   
+        <div>                   
+        </div>                                   
       )
+    }
+
+    handleScriptCreate() {
+        this.setState({ scriptLoaded: false })
+    }
+      
+    handleScriptError() {
+        this.setState({ scriptError: true })
+    }
+      
+    handleScriptLoad() {
+        this.setState({ scriptLoaded: true })
     }
   }
   

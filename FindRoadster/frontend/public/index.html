@@ -29,7 +29,7 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <div id="main-container" style="width: 500px; height: 500px;">main-div</div>
+    <div id="main-container" style="width:500px; height:500px"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,7 +39,6 @@
 
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
-
     -->
     <script src="https://typpo.github.io/spacekit/src/lib/three.r98.min.js"></script>
     <script src="https://typpo.github.io/spacekit/src/lib/TrackballControls.js"></script>
@@ -64,7 +63,41 @@
         viz.createObject('saturn', Spacekit.SpaceObjectPresets.SATURN);
         viz.createObject('uranus', Spacekit.SpaceObjectPresets.URANUS);
         viz.createObject('neptune', Spacekit.SpaceObjectPresets.NEPTUNE);    
-    </script>      
-  </body>          
-  
+
+        const space_x = 'https://api.spacexdata.com/v3/roadster'
+        var request = new XMLHttpRequest()
+
+        // Open a new connection, using the GET request on the URL endpoint
+        request.open('GET', space_x, true)
+
+        request.onload = function() {
+         
+          var data = JSON.parse(this.response);
+          if (request.status >= 200 && request.status < 400) {
+            const roadster = viz.createObject('spaceman', {
+              labelText: 'Tesla Roadster',
+              ephem: new Spacekit.Ephem({
+                // These parameters define orbit shape.
+                a: data.apoapsis_au,
+                e: data.periapsis_au,
+                i: data.inclination,
+                
+                // These parameters define the orientation of the orbit.
+                om: 3.170946964325638E+02,
+                w: 1.774865822248395E+02,
+                ma: 1.764302192487955E+02,
+                
+                // Where the object is in its orbit.
+                epoch: 2458426.500000000,
+              }, 'deg'),
+            });
+          }
+        }
+        // Send request
+        request.send()
+
+
+    </script> 
+    
+  </body>
 </html>
